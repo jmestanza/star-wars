@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Movie } from './models/movie.dto';
 import { PeopleReq } from './models/peoplereq.dto';
 import { Planet } from './models/planet.dto';
@@ -13,7 +13,9 @@ export class SwapiService {
   constructor(private readonly httpService: HttpService) {}
 
   findAllCharacters(): Observable<AxiosResponse<PeopleReq[]>> {
-    return this.httpService.get(`${this.apiURL}/people/`);
+    return this.httpService
+      .get(`${this.apiURL}/people/`)
+      .pipe(map((response) => response.data));
   }
 
   findAllMovies(): Movie[] {
