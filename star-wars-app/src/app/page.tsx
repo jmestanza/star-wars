@@ -6,17 +6,17 @@ import Image from "next/image";
 import bg from "../../public/img/star-wars-bg.jpg";
 
 export default function Home() {
-  const [movies, setMovies] = useState<Array<any>>([]);
-  const [characters, setCharacters] = useState<Array<any>>([]);
+  // const [movies, setMovies] = useState<Array<any>>([]);
+  // const [characters, setCharacters] = useState<Array<any>>([]);
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/swapi/movies").then((res) => {
-      setMovies(res.data);
-    });
-    Axios.get("http://localhost:8080/swapi/characters").subscribe((response) =>
-      setCharacters(response.data.results)
-    );
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/swapi/movies").then((res) => {
+  //     setMovies(res.data);
+  //   });
+  //   Axios.get("http://localhost:8080/swapi/characters").subscribe((response) =>
+  //     setCharacters(response.data.results)
+  //   );
+  // }, []);
 
   return (
     <div
