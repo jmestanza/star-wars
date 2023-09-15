@@ -32,7 +32,7 @@ const SearchBar = (props: any) => {
             type="search"
             id="default-search"
             className="p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-yellow-500 bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-            placeholder="Search character"
+            placeholder={props.placeholder}
             required
           />
         </div>
