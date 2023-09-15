@@ -15,6 +15,7 @@ interface InfoTypes {
   displayPagination: boolean;
   displaySearchBar: boolean;
   searchPlaceholder: string;
+  getGridDisplay: Function;
 }
 
 function DisplayInfo<T extends Basic>({
@@ -25,6 +26,7 @@ function DisplayInfo<T extends Basic>({
   displayPagination,
   displaySearchBar,
   searchPlaceholder,
+  getGridDisplay,
 }: InfoTypes) {
   const [name, setName] = useState("");
 
@@ -61,12 +63,7 @@ function DisplayInfo<T extends Basic>({
             {displayPagination && (
               <PrevButton disabled={page <= 1} onClick={() => onPrev()} />
             )}
-
-            <div className={gridWidth}>
-              <div className={`grid grid-cols-1 md:grid-cols-${gridCols}`}>
-                {content.results.map((x) => mapFunction(x))}
-              </div>
-            </div>
+            {getGridDisplay(content)}
             {displayPagination && (
               <NextButton
                 disabled={totalPages !== undefined && page >= totalPages}
