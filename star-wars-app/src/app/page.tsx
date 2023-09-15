@@ -20,10 +20,11 @@ export default function Home() {
 
   return (
     <div
-      className="h-screen"
+      // className="h-screen"
       style={{
         backgroundImage: `url(${bg.src})`,
         backgroundSize: "auto 100%",
+        height: "92vh",
       }}
     >
       <div className="absolute scale-50 inset-0 hover:scale-75 ease-in duration-500">

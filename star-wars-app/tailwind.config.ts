@@ -19,6 +19,9 @@ const config: Config = {
       colors: {
         "sw-gray": "#b5b7b7",
       },
+      height: {
+        "92vh": "92vh",
+      },
     },
   },
   plugins: [],

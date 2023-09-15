@@ -1,8 +1,8 @@
 import Character from "./character.dto";
 
-export default interface PeopleReq {
-  count: string;
+export default interface PaginatedResponse<T> {
+  count: number;
   next: string | null;
   previous: string | null;
-  results: Array<Character>;
+  results: Array<T>;
 }
