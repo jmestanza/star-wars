@@ -26,15 +26,7 @@ const Characters = () => {
     resetPagination();
   };
 
-  const getId = (url: string) => {
-    return url.replace("https://swapi.dev/api/people/", "").replace("/", "");
-  };
-
-  const allCharactersWithId: Character[] = content.results.map((x) => {
-    return { ...x, id: getId(x.url) };
-  });
-
-  const shouldNotRender = allCharactersWithId.length === 0;
+  const shouldNotRender = content.results.length === 0;
 
   return (
     <div className="flex flex-col h-92vh bg-black">
@@ -42,27 +34,28 @@ const Characters = () => {
       {shouldNotRender ? (
         <Spinner />
       ) : (
-        <div className="flex flex-row items-center justify-center bg-black">
-          <PrevButton disabled={page <= 1} onClick={() => onPrev()} />
-          <div className="w-3/4">
-            <div className="grid grid-cols-1 md:grid-cols-5">
-              {allCharactersWithId.map((person) => (
-                <CharacterCard key={person.name} character={person} />
-              ))}
+        <div>
+          <div className="flex flex-row items-center justify-center bg-black">
+            <PrevButton disabled={page <= 1} onClick={() => onPrev()} />
+            <div className="w-3/4">
+              <div className="grid grid-cols-1 md:grid-cols-5">
+                {content.results.map((person) => (
+                  <CharacterCard key={person.name} character={person} />
+                ))}
+              </div>
             </div>
+            <NextButton
+              disabled={totalPages !== undefined && page >= totalPages}
+              onClick={() => onNext()}
+            />
           </div>
-          <NextButton
-            disabled={totalPages !== undefined && page >= totalPages}
-            onClick={() => onNext()}
-          />
+          <div className="flex items-center justify-center font-primary bg-black">
+            <p className="text-xl text-white font-bold mb-10">
+              Page: {page} of {totalPages}
+            </p>
+          </div>
         </div>
       )}
-
-      <div className="flex items-center justify-center font-primary bg-black">
-        <p className="text-xl text-white font-bold mb-10">
-          Page: {page} of {totalPages}
-        </p>
-      </div>
     </div>
   );
 };

@@ -16,7 +16,8 @@ const usePagination = (name: string) => {
   const [content, setContent] =
     useState<PaginatedResponse<Character>>(initContent);
 
-  const totalPages = content.count === -1 ? Number.MAX_VALUE : content.count;
+  const totalPages =
+    content.count === -1 ? Number.MAX_VALUE : Math.ceil(content.count / 10);
 
   const onNext = () => {
     setPage((prevPage) => prevPage + 1);
@@ -31,12 +32,23 @@ const usePagination = (name: string) => {
     setContent(initContent);
   };
 
+  const getId = (url: string) => {
+    return url.replace("https://swapi.dev/api/people/", "").replace("/", "");
+  };
+
   useEffect(() => {
-    fetch(`https://swapi.dev/api/people/?search=${name}&page=${page}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setContent(res);
-      });
+    const getData = setTimeout(() => {
+      fetch(`https://swapi.dev/api/people/?search=${name}&page=${page}`)
+        .then((res) => res.json())
+        .then((res) => {
+          const allCharactersWithId: Character[] = res.results.map((x) => {
+            return { ...x, id: getId(x.url) };
+          });
+          setContent({ ...res, results: allCharactersWithId });
+        });
+    }, 2000);
+
+    return () => clearTimeout(getData);
   }, [page, name]);
 
   return {
