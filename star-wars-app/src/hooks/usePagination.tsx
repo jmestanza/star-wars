@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import PeopleReq from "../../models/peoplereq.dto";
 import PaginatedResponse from "../../models/peoplereq.dto";
 import Character from "../../models/character.dto";
+import Basic from "../../models/basic.dto";
 import { data } from "autoprefixer";
 
-const usePagination = (name: string) => {
+function usePagination<T extends Basic>(asset: string, name: string) {
   const [page, setPage] = useState<number>(1);
   const initContent = {
     count: -1,
@@ -13,8 +14,7 @@ const usePagination = (name: string) => {
     previous: null,
     results: [],
   };
-  const [content, setContent] =
-    useState<PaginatedResponse<Character>>(initContent);
+  const [content, setContent] = useState<PaginatedResponse<T>>(initContent);
 
   const totalPages =
     content.count === -1 ? Number.MAX_VALUE : Math.ceil(content.count / 10);
@@ -33,18 +33,18 @@ const usePagination = (name: string) => {
   };
 
   const getId = (url: string) => {
-    return url.replace("https://swapi.dev/api/people/", "").replace("/", "");
+    return url.replace(`https://swapi.dev/api/${asset}/`, "").replace("/", "");
   };
 
   useEffect(() => {
     const getData = setTimeout(() => {
-      fetch(`https://swapi.dev/api/people/?search=${name}&page=${page}`)
+      fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`)
         .then((res) => res.json())
         .then((res) => {
-          const allCharactersWithId: Character[] = res.results.map((x) => {
+          const allTWithId: T[] = res.results.map((x: T) => {
             return { ...x, id: getId(x.url) };
           });
-          setContent({ ...res, results: allCharactersWithId });
+          setContent({ ...res, results: allTWithId });
         });
     }, 2000);
 
@@ -60,6 +60,6 @@ const usePagination = (name: string) => {
     setPage,
     resetPagination,
   };
-};
+}
 
 export default usePagination;

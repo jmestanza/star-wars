@@ -1,4 +1,6 @@
-export default interface Character {
+import Basic from "./basic.dto";
+
+export default interface Character extends Basic {
   name: string;
   height: string;
   mass: string;
@@ -14,6 +16,6 @@ export default interface Character {
   starships: string[];
   created: string;
   edited: string;
-  url: string;
-  id: string | null;
+  // url: string;
+  // id: string | null;
 }

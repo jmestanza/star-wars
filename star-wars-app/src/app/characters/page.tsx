@@ -1,13 +1,12 @@
 "use client";
 import CharacterCard from "@/components/character/CharacterCard";
-import Spinner from "@/components/spinner/Spinner";
-import Axios from "axios-observable";
-import { useEffect, useState } from "react";
-import Character from "../../../models/character.dto";
-import usePagination from "@/hooks/usePagination";
-import SearchBar from "@/components/search/SearchBar";
-import PrevButton from "@/components/pagination/PrevButton";
 import NextButton from "@/components/pagination/NextButton";
+import PrevButton from "@/components/pagination/PrevButton";
+import SearchBar from "@/components/search/SearchBar";
+import Spinner from "@/components/spinner/Spinner";
+import usePagination from "@/hooks/usePagination";
+import { useState } from "react";
+import Character from "../../../models/character.dto";
 
 const Characters = () => {
   const [name, setName] = useState("");
@@ -20,7 +19,7 @@ const Characters = () => {
     onPrev,
     setPage,
     resetPagination,
-  } = usePagination(name);
+  } = usePagination<Character>("people", name);
 
   const onSearch = () => {
     resetPagination();
@@ -40,7 +39,11 @@ const Characters = () => {
             <div className="w-3/4">
               <div className="grid grid-cols-1 md:grid-cols-5">
                 {content.results.map((person) => (
-                  <CharacterCard key={person.name} character={person} />
+                  <CharacterCard
+                    key={person.name}
+                    asset="people"
+                    character={person}
+                  />
                 ))}
               </div>
             </div>
