@@ -7,5 +7,4 @@ export default interface Movie extends Basic {
   director: string;
   producer: string;
   release_date: string;
-  // id: string | null;
 }

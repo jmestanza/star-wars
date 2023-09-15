@@ -44,9 +44,9 @@
 
 .strokeme {
   color: #b5b7b7;
-  background-color: black;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
-    2px 2px 0 #000;
+  background-color: transparent;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .underline-on-hover:hover {

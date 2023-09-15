@@ -52,7 +52,7 @@ const Navbar = () => {
               <NavbarLink text="MOVIES" href="/movies" />
             </li>
             <li>
-              <NavbarLink text="SHIPS" href="/ships" />
+              <NavbarLink text="SHIPS" href="/starships" />
             </li>
             <li>
               <NavbarLink text="PLANETS" href="/planets" />

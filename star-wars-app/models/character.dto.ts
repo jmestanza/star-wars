@@ -16,6 +16,4 @@ export default interface Character extends Basic {
   starships: string[];
   created: string;
   edited: string;
-  // url: string;
-  // id: string | null;
 }

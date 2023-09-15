@@ -7,6 +7,7 @@ import Spinner from "@/components/spinner/Spinner";
 import usePagination from "@/hooks/usePagination";
 import { useState } from "react";
 import Character from "../../../models/character.dto";
+import PaginationStatus from "@/components/pagination/PaginationStatus";
 
 const Characters = () => {
   const [name, setName] = useState("");
@@ -52,11 +53,12 @@ const Characters = () => {
               onClick={() => onNext()}
             />
           </div>
-          <div className="flex items-center justify-center font-primary bg-black">
+          <PaginationStatus page={page} totalPages={totalPages} />
+          {/* <div className="flex items-center justify-center font-primary bg-black">
             <p className="text-xl text-white font-bold mb-10">
               Page: {page} of {totalPages}
             </p>
-          </div>
+          </div> */}
         </div>
       )}
     </div>
