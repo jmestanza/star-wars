@@ -6,7 +6,7 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState<Boolean>(false);
 
   return (
-    <nav className="bg-transparent">
+    <nav className="bg-black">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4">
         <div className="flex md:order-2">
           <button

@@ -15,4 +15,5 @@ export default interface Character {
   created: string;
   edited: string;
   url: string;
+  id: string | null;
 }

@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import bg from "../../public/img/star-wars-bg.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,19 +18,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        <div
+        {/* <div
           className="h-screen"
           style={{
             backgroundImage: `url(${bg.src})`,
-            // backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            // width: "100%",
-            // height: "100vh",
+            backgroundSize: "auto 100%",
           }}
-        >
-          <Navbar />
-          {children}
-        </div>
+        > */}
+        <Navbar />
+        {children}
+        {/* </div> */}
       </body>
     </html>
   );
