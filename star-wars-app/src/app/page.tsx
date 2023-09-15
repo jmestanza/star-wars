@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Axios from "axios-observable";
+import Image from "next/image";
 
 export default function Home() {
   const [movies, setMovies] = useState<Array<any>>([]);
@@ -17,13 +18,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      {movies.map((x: any) => (
-        <div key={x.name}>{x.name}</div>
-      ))}
-      {characters &&
-        characters.length > 0 &&
-        characters.map((x: any) => <div key={x.name}>{x.name}</div>)}
+    <div className="absolute scale-50 inset-0 hover:scale-75 ease-in duration-500">
+      <Image
+        style={{ objectFit: "contain" }}
+        src="/img/star-wars-logo.png"
+        alt="background image"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority
+        fill
+      />
     </div>
   );
 }

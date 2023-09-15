@@ -16,12 +16,142 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: "Matterhorn";
+  src: url("https://static-mh.content.disney.io/matterhorn/assets/m4-7e766c2825c7.eot#")
+      format("eot"),
+    url("https://static-mh.content.disney.io/matterhorn/assets/m4-b366701d6945.woff")
+      format("woff"),
+    url("https://static-mh.content.disney.io/matterhorn/assets/m4-ac909dff444f.ttf")
+      format("truetype"),
+    url("https://static-mh.content.disney.io/matterhorn/assets/m4-3d636e3b4270.svg#Matterhorn")
+      format("svg");
+  font-weight: 400;
+  font-style: normal;
 }
+
+/* @layer base {
+  .font-outline-1 {
+    -webkit-text-stroke: 0.1em black;
+  }
+  .font-outline-2 {
+    -webkit-text-stroke: 2px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
+} */
+
+.strokeme {
+  color: #b5b7b7;
+  background-color: black;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.underline-on-hover:hover {
+  margin-bottom: -10px;
+  text-decoration: underline;
+}
+
+/* @mixin lightsaber($color) {
+  background: mix($color, #fff, 10%);
+  box-shadow: $color 0px 0px 0px 2px;
+  &:hover {
+    box-shadow: $color 0px 0px 20px 2px;
+    text-shadow: $color 0px 0px 6px, $color 0px 0px 10px;
+  }
+} */
+
+/* burger {
+  cursor: pointer;
+  opacity: 0;
+  animation: fadein 0.2s ease 1s forwards;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  %burgersection {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    height: 10%;
+    width: 70%;
+    transform-origin: 50% 50%;
+    transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      height: 40%;
+      background: white;
+      position: absolute;
+      top: 50%;
+      transform: translate(0%, -45%);
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    &:before {
+      left: 0;
+      width: calc(-1px + 75%);
+      border-radius: 10px 0px 0px 10px;
+    }
+    &:after {
+      right: 0;
+      width: calc(-1px + 25%);
+    }
+  }
+
+  &:hover {
+    .bun {
+      &.top:before {
+        background: #fee;
+        box-shadow: #f00 0px 0px 10px 1px;
+      }
+      &.bottom:before {
+        background: #dff;
+        box-shadow: #0ff 0px 0px 10px 1px;
+      }
+    }
+    .filling {
+      &:before {
+        background: #efe;
+        box-shadow: #0f0 0px 0px 10px 1px;
+      }
+    }
+  }
+
+  .bun {
+    @extend %burgersection;
+    &.top {
+      top: 25%;
+    }
+    &.bottom {
+      top: 75%;
+    }
+  }
+  .filling {
+    @extend %burgersection;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    animation: green-ls-out 0.8s ease forwards;
+  }
+
+  &.active {
+    .bun {
+      border-radius: 3px;
+      top: 50%;
+      transition: top 0.4s ease, transform 0.4s ease;
+      &.top {
+        transform: translate(-50%, -50%) rotate(-225deg);
+      }
+      &.bottom {
+        transform: translate(-50%, -50%) rotate(405deg);
+      }
+    }
+    .filling {
+      transform: translate(-50%, -50%) rotate(-90deg);
+      animation: green-ls-in 0.8s ease forwards;
+    }
+  }
+} */
