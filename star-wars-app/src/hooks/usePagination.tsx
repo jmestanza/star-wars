@@ -19,12 +19,18 @@ function usePagination<T extends Basic>(asset: string, name: string) {
   const totalPages =
     content.count === -1 ? Number.MAX_VALUE : Math.ceil(content.count / 10);
 
+  const resetContent = () => {
+    setContent(initContent);
+  };
+
   const onNext = () => {
     setPage((prevPage) => prevPage + 1);
+    resetContent();
   };
 
   const onPrev = () => {
     setPage((prevPage) => prevPage - 1);
+    resetContent();
   };
 
   const resetPagination = () => {
