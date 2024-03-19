@@ -8,7 +8,10 @@ export default function Page({ params }: { params: { id: string } }) {
   const [character, setCharacter] = useState<Character>();
 
   useEffect(() => {
-    fetch(`https://swapi.dev/api/people/${params.id}`)
+    fetch(`https://swapi.dev/api/people/${params.id}`, {
+      cache: "force-cache", // should not be needed but we explicitly call this
+      next: { revalidate: 3600 }, // every hour revalidate
+    })
       .then((res) => res.json())
       .then((res) => setCharacter(res));
   }, [params.id]);
