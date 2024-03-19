@@ -12,7 +12,7 @@ const CharacterCard = ({ character }: CharacterProps) => {
       <div className="grayscale group-hover:grayscale-0 relative bg-gray-50/75 cursor-pointer group-hover:scale-110 transition duration-300 ease-in-out">
         <Link href={`/characters/${character.id}`}>
           <Image
-            src={`/img/people/${character.id}.jpg`}
+            src={`/img/people/${character.id}.webp`}
             width="430"
             height="200"
             alt="name"
