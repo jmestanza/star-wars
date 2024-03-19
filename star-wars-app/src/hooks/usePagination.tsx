@@ -44,7 +44,10 @@ function usePagination<T extends Basic>(asset: string, name: string) {
 
   useEffect(() => {
     const getData = setTimeout(() => {
-      fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`)
+      fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`, {
+        // cache: "force-cache",
+        next: { revalidate: false },
+      })
         .then((res) => res.json())
         .then((res) => {
           const allTWithId: T[] = res.results.map((x: T) => {

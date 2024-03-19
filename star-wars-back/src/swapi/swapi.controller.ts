@@ -1,12 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { Character } from './models/character.dto';
-import { Movie } from './models/movie.dto';
-import { Ship } from './models/ship.dto';
-import { Planet } from './models/planet.dto';
-import { SwapiService } from './swapi.service';
-import { PeopleReq } from './models/peoplereq.dto';
-import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
+import { Movie } from './models/movie.dto';
+import { PeopleReq } from './models/peoplereq.dto';
+import { Planet } from './models/planet.dto';
+import { Ship } from './models/ship.dto';
+import { SwapiService } from './swapi.service';
 
 @Controller('swapi')
 export class SwapiController {
