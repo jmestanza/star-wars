@@ -1,18 +1,12 @@
-import usePagination from "@/hooks/usePagination";
-import React, { useState } from "react";
-import Basic from "../../../models/basic.dto";
 import SearchBar from "@/components/search/SearchBar";
 import Spinner from "@/components/spinner/Spinner";
-import PrevButton from "@/components/pagination/PrevButton";
-import NextButton from "@/components/pagination/NextButton";
-import PaginationStatus from "@/components/pagination/PaginationStatus";
+import usePagination from "@/hooks/usePagination";
+import { Suspense, useState } from "react";
+import Basic from "../../../models/basic.dto";
+import PaginationLayout from "../layout/PaginationLayout";
 
 interface InfoTypes {
   asset: string;
-  mapFunction: Function;
-  gridCols: string;
-  gridWidth: string;
-  displayPagination: boolean;
   displaySearchBar: boolean;
   searchPlaceholder: string;
   getGridDisplay: Function;
@@ -20,10 +14,6 @@ interface InfoTypes {
 
 function DisplayInfo<T extends Basic>({
   asset,
-  mapFunction,
-  gridCols,
-  gridWidth,
-  displayPagination,
   displaySearchBar,
   searchPlaceholder,
   getGridDisplay,
@@ -44,8 +34,6 @@ function DisplayInfo<T extends Basic>({
     resetPagination();
   };
 
-  const shouldNotRender = content.results.length === 0;
-
   return (
     <div className="flex flex-col h-92vh bg-black">
       {displaySearchBar && (
@@ -55,27 +43,16 @@ function DisplayInfo<T extends Basic>({
           placeholder={searchPlaceholder}
         />
       )}
-      {shouldNotRender ? (
-        <Spinner />
-      ) : (
-        <div>
-          <div className="flex flex-row items-center justify-center bg-black">
-            {displayPagination && (
-              <PrevButton disabled={page <= 1} onClick={() => onPrev()} />
-            )}
-            {getGridDisplay(content)}
-            {displayPagination && (
-              <NextButton
-                disabled={totalPages !== undefined && page >= totalPages}
-                onClick={() => onNext()}
-              />
-            )}
-          </div>
-          {displayPagination && (
-            <PaginationStatus page={page} totalPages={totalPages} />
-          )}
-        </div>
-      )}
+      <Suspense fallback={<Spinner />}>
+        <PaginationLayout
+          page={page}
+          totalPages={totalPages}
+          onPrev={onPrev}
+          onNext={onNext}
+        >
+          {getGridDisplay(content)}
+        </PaginationLayout>
+      </Suspense>
     </div>
   );
 }

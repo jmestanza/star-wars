@@ -22,10 +22,6 @@ const Starships = () => {
   return (
     <DisplayInfo<Starship>
       asset="starships"
-      mapFunction={mapFunction}
-      gridCols="grid-cols-5"
-      gridWidth="w-3/4"
-      displayPagination={true}
       displaySearchBar={true}
       searchPlaceholder={"Search ship"}
       getGridDisplay={getGridDisplay}

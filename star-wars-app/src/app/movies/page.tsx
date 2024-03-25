@@ -22,10 +22,6 @@ const Movies = () => {
   return (
     <DisplayInfo<Movie>
       asset="films"
-      mapFunction={mapFunction}
-      gridCols="grid-cols-3"
-      gridWidth="w-2/5"
-      displayPagination={false}
       displaySearchBar={false}
       searchPlaceholder={""}
       getGridDisplay={getGridDisplay}

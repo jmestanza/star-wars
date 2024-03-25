@@ -23,10 +23,6 @@ const Planets = () => {
   return (
     <DisplayInfo<Planet>
       asset="planets"
-      mapFunction={mapFunction}
-      gridCols="grid-cols-4"
-      gridWidth="w-3/4"
-      displayPagination={true}
       displaySearchBar={true}
       searchPlaceholder={"Search planet"}
       getGridDisplay={getGridDisplay}

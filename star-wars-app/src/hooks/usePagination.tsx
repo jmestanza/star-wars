@@ -1,10 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import PeopleReq from "../../models/peoplereq.dto";
-import PaginatedResponse from "../../models/peoplereq.dto";
-import Character from "../../models/character.dto";
+import { useEffect, useState } from "react";
 import Basic from "../../models/basic.dto";
-import { data } from "autoprefixer";
+import PaginatedResponse from "../../models/peoplereq.dto";
 
 function usePagination<T extends Basic>(asset: string, name: string) {
   const [page, setPage] = useState<number>(1);
@@ -15,9 +11,11 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     results: [],
   };
   const [content, setContent] = useState<PaginatedResponse<T>>(initContent);
-
+  const pageSize = 10;
   const totalPages =
-    content.count === -1 ? Number.MAX_VALUE : Math.ceil(content.count / 10);
+    content.count === -1
+      ? Number.MAX_VALUE
+      : Math.ceil(content.count / pageSize);
 
   const resetContent = () => {
     setContent(initContent);
