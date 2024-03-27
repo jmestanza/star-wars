@@ -4,12 +4,17 @@ import PaginatedResponse from "../../models/peoplereq.dto";
 
 function usePagination<T extends Basic>(asset: string, name: string) {
   const [page, setPage] = useState<number>(1);
+  const initArray = Array.from(Array<T>(10)).map((el, index) => {
+    return { ...el, id: index.toString(), url: "", loaded: false };
+  });
   const initContent = {
     count: -1,
     next: null,
     previous: null,
-    results: [],
+    results: initArray, // T has Basic, but not all filled -> that's why the warning exists
+    loaded: false,
   };
+
   const [content, setContent] = useState<PaginatedResponse<T>>(initContent);
   const pageSize = 10;
   const totalPages =
@@ -36,26 +41,23 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     setContent(initContent);
   };
 
-  const getId = (url: string) => {
-    return url.replace(`https://swapi.dev/api/${asset}/`, "").replace("/", "");
-  };
-
   useEffect(() => {
-    const getData = setTimeout(() => {
-      fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`, {
-        // cache: "force-cache",
-        next: { revalidate: false },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          const allTWithId: T[] = res.results.map((x: T) => {
-            return { ...x, id: getId(x.url) };
-          });
-          setContent({ ...res, results: allTWithId });
-        });
-    }, 2000);
+    const getId = (url: string) => {
+      return url
+        .replace(`https://swapi.dev/api/${asset}/`, "")
+        .replace("/", "");
+    };
 
-    return () => clearTimeout(getData);
+    fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`, {
+      next: { revalidate: 3600 }, // every hour revalidate fetch
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        const allTWithId: T[] = res.results.map((x: T) => {
+          return { ...x, id: getId(x.url), loaded: true };
+        });
+        setContent({ ...res, results: allTWithId });
+      });
   }, [page, name]);
 
   return {
@@ -64,7 +66,6 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     content,
     onNext,
     onPrev,
-    setPage,
     resetPagination,
   };
 }

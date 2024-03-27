@@ -5,7 +5,6 @@ import { Suspense, use } from "react";
 export default function Page({ params }: { params: { id: string } }) {
   const character = use(
     fetch(`https://swapi.dev/api/people/${params.id}`, {
-      cache: "force-cache", // should not be needed but we explicitly call this
       next: { revalidate: 3600 }, // every hour revalidate
     }).then((res) => res.json())
   );

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const SearchBar = (props: any) => {
   const searchNameHandler = (e: any) => {
     props.setName(e.target.value);
-    props.onSearch();
+    // props.onSearch();
   };
   return (
     <div className="flex justify-center items-center">

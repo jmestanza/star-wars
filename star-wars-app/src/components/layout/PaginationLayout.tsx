@@ -1,8 +1,7 @@
-import React, { ComponentProps, ReactNode } from "react";
-import PrevButton from "../pagination/PrevButton";
+import { ReactNode } from "react";
 import NextButton from "../pagination/NextButton";
 import PaginationStatus from "../pagination/PaginationStatus";
-import usePagination from "@/hooks/usePagination";
+import PrevButton from "../pagination/PrevButton";
 
 type LayoutTypes = {
   children: ReactNode;

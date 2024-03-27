@@ -19,8 +19,25 @@ const config: Config = {
       colors: {
         "sw-gray": "#b5b7b7",
       },
+      width: {
+        card: "241px",
+      },
       height: {
         "92vh": "92vh",
+        card: "330px",
+      },
+      animation: {
+        pulse: "pulse 1.5s cubic-bezier(0.4,0,0.6,1) infinite",
+      },
+      keyframes: {
+        pulse: {
+          "0%,100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0",
+          },
+        },
       },
     },
   },
