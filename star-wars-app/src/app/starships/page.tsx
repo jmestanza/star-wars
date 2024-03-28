@@ -5,15 +5,18 @@ import Starship from "../../../models/starship.dto";
 import PaginatedResponse from "../../../models/peoplereq.dto";
 
 const Starships = () => {
-  const mapFunction = (ship: Starship) => {
-    return <StarshipCard key={ship.id} starship={ship} />;
-  };
-
   const getGridDisplay = (content: PaginatedResponse<Starship>) => {
     return (
       <div className="w-3/4">
         <div className="grid grid-cols-1 md:grid-cols-5">
-          {content.results.map((x) => mapFunction(x))}
+          {content.results.map((ship: Starship, index) => {
+            return (
+              <StarshipCard
+                key={ship.id}
+                starship={{ ...ship, id: index.toString() }}
+              />
+            );
+          })}
         </div>
       </div>
     );

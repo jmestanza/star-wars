@@ -23,7 +23,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="border-yellow-500 border-2 border-solid rounded mt-10">
           <div className="w-72 h-96 relative">
             <Image
-              src={`/img/starships/${params.id - 1}.webp`}
+              src={`/img/starships/${params.id}.webp`}
               fill
               style={{ objectFit: "contain" }}
               alt="name"
