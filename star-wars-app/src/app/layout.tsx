@@ -19,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <Navbar />
-        <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-          {children}
-        </SkeletonTheme>
+        {children}
       </body>
     </html>
   );
