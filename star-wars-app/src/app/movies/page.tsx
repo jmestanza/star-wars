@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Movie from "../../../models/movie.dto";
-import MovieCard from "@/components/movie/MovieCard";
+import MovieCard from "@/components/cards/movie/MovieCard";
 import DisplayInfo from "../../components/info/DisplayInfo";
 import PaginatedResponse from "../../../models/peoplereq.dto";
 

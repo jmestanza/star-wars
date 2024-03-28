@@ -49,7 +49,7 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     };
 
     fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`, {
-      next: { revalidate: 3600 }, // every hour revalidate fetch
+      // next: { revalidate: 3600 }, // every hour revalidate fetch
     })
       .then((res) => res.json())
       .then((res) => {

@@ -1,6 +1,6 @@
 "use client";
 import DisplayInfo from "@/components/info/DisplayInfo";
-import StarshipCard from "@/components/starships/StarshipCard";
+import StarshipCard from "@/components/cards/starships/StarshipCard";
 import Starship from "../../../models/starship.dto";
 import PaginatedResponse from "../../../models/peoplereq.dto";
 

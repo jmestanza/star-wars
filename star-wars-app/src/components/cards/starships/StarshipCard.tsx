@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Starship from "../../../models/starship.dto";
+import Starship from "../../../../models/starship.dto";
 import Link from "next/link";
 
 interface StarshipProps {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Planet from "../../../models/planet.dto";
+import Planet from "../../../../models/planet.dto";
 import Image from "next/image";
 
 interface PlanetProps {

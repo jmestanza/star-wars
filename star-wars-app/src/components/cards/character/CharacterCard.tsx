@@ -1,15 +1,11 @@
-import "react-loading-skeleton/dist/skeleton.css";
-import Character from "../../../models/character.dto";
-import CardLayout from "../layout/CardLayout";
-import Skeleton from "../skeleton/Skeleton";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import Character from "../../../../models/character.dto";
+import CardLayout from "../../layout/CardLayout";
 
 const CharacterCard = ({ character }: { character: Character }) => {
-  return !character.loaded ? (
-    <Skeleton />
-  ) : (
-    <CardLayout>
+  return (
+    <CardLayout asset={character}>
       <Link href={`/characters/${character.id}`}>
         <Image
           src={`/img/people/${character.id}.jpg`}

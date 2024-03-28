@@ -2,7 +2,7 @@
 import React from "react";
 import Planet from "../../../models/planet.dto";
 import DisplayInfo from "@/components/info/DisplayInfo";
-import PlanetCard from "@/components/planet/PlanetCard";
+import PlanetCard from "@/components/cards/planet/PlanetCard";
 import PaginatedResponse from "../../../models/peoplereq.dto";
 
 const Planets = () => {
