@@ -1,12 +1,21 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
-const NextButton = (props: any) => {
+const NextButton = ({
+  noData,
+  disabled,
+  onClick,
+}: {
+  noData: boolean;
+  disabled: boolean;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+}) => {
+  if (noData) return null;
   return (
     <button
       //   disabled={totalPages !== undefined && page >= totalPages}
       //   onClick={() => onNext()}
-      disabled={props.disabled}
-      onClick={props.onClick}
+      disabled={disabled}
+      onClick={onClick}
       className="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
     >
       <svg

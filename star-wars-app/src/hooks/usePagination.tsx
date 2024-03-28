@@ -3,8 +3,17 @@ import Basic from "../../models/basic.dto";
 import PaginatedResponse from "../../models/peoplereq.dto";
 
 function usePagination<T extends Basic>(asset: string, name: string) {
+  console.log("asset:", asset);
+  console.log("name:", name);
+
   const [page, setPage] = useState<number>(1);
-  const initArray = Array.from(Array<T>(10)).map((el, index) => {
+  const initItems: Record<string, number> = {
+    people: 10,
+    films: 6,
+    starships: 10,
+    planets: 10,
+  };
+  const initArray = Array.from(Array<T>(initItems[asset])).map((el, index) => {
     return { ...el, id: index.toString(), url: "", loaded: false };
   });
   const initContent = {
@@ -21,6 +30,7 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     content.count === -1
       ? Number.MAX_VALUE
       : Math.ceil(content.count / pageSize);
+  console.log("content", content);
 
   const resetContent = () => {
     setContent(initContent);
@@ -42,6 +52,9 @@ function usePagination<T extends Basic>(asset: string, name: string) {
   };
 
   useEffect(() => {
+    console.log("changed in useffect page:", page);
+    console.log("changed in useffect name:", name);
+
     const getId = (url: string) => {
       return url
         .replace(`https://swapi.dev/api/${asset}/`, "")

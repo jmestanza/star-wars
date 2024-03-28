@@ -20,11 +20,17 @@ const config: Config = {
         "sw-gray": "#b5b7b7",
       },
       width: {
-        card: "241px",
+        "people-card": "241px",
+        "movie-card": "241px",
+        "planet-card": "241px",
+        "ship-card": "241px",
       },
       height: {
         "92vh": "92vh",
-        card: "330px",
+        "people-card": "330px",
+        "movie-card": "330px",
+        "planet-card": "240px",
+        "ship-card": "330px",
       },
       animation: {
         pulse: "pulse 1.5s cubic-bezier(0.4,0,0.6,1) infinite",

@@ -5,11 +5,12 @@ import CardLayout from "../../layout/CardLayout";
 
 const CharacterCard = ({ character }: { character: Character }) => {
   return (
-    <CardLayout asset={character}>
+    <CardLayout asset={character} width="w-people-card" height="h-people-card">
       <Link href={`/characters/${character.id}`}>
         <Image
           src={`/img/people/${character.id}.jpg`}
           fill // always uses position=absolute
+          sizes="100vh"
           alt="name"
         />
       </Link>

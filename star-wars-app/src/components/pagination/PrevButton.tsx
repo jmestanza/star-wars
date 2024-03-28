@@ -1,10 +1,20 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
-const PrevButton = (props: any) => {
+const PrevButton = ({
+  noData,
+  disabled,
+  onClick,
+}: {
+  noData: boolean;
+  disabled: boolean;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+}) => {
+  if (noData) return null;
+
   return (
     <button
-      disabled={props.disabled}
-      onClick={props.onClick}
+      disabled={disabled}
+      onClick={onClick}
       className="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
     >
       <svg
