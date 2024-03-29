@@ -8,12 +8,10 @@ import PaginatedResponse from "../../../models/peoplereq.dto";
 const Movies = () => {
   const getGridDisplay = (content: PaginatedResponse<Movie>) => {
     return (
-      <div className="sm:w-2/5">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          {content.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-3">
+        {content.results.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     );
   };

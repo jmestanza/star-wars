@@ -12,10 +12,8 @@ const Planets = () => {
 
   const getGridDisplay = (content: PaginatedResponse<Planet>) => {
     return (
-      <div className="w-3/4 flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          {content.results.map((x) => mapFunction(x))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-5">
+        {content.results.map((x) => mapFunction(x))}
       </div>
     );
   };

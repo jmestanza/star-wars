@@ -7,12 +7,12 @@ import DisplayInfo from "../../components/info/DisplayInfo";
 const Characters = () => {
   const getGridDisplay = (content: PaginatedResponse<Character>) => {
     return (
-      <div className="w-3/4 flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          {content.results.map((person: Character) => {
-            return <CharacterCard key={person.name} character={person} />;
-          })}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-5">
+        {content.results.map((person: Character) => {
+          return (
+            <CharacterCard key={person.name + person.id} character={person} />
+          );
+        })}
       </div>
     );
   };
