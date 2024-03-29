@@ -10,7 +10,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <Image
           src={`/img/movies/${movie.id}.jpg`}
           fill // always uses position=absolute
-          sizes="100vh"
           alt="name"
         />
       </Link>

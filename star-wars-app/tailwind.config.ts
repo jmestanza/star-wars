@@ -26,6 +26,7 @@ const config: Config = {
         "ship-card": "241px",
       },
       height: {
+        "74px": "74px",
         "92vh": "92vh",
         "people-card": "330px",
         "movie-card": "330px",

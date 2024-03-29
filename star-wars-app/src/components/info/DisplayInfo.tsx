@@ -23,7 +23,7 @@ function DisplayInfo<T extends Basic>({
   console.log("starships: ", content);
 
   return (
-    <div className="flex flex-col h-92vh bg-black">
+    <div className="flex flex-col h-100vh bg-black">
       {displaySearchBar && (
         <SearchBar setName={setName} placeholder={searchPlaceholder} />
       )}

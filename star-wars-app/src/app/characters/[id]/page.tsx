@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={<div>Fallback</div>}>
-      <div className="flex justify-center bg-black h-92vh">
+      <div className="flex justify-center bg-black h-100vh">
         <div className="flex flex-col">
           <div className="border-yellow-500 border-2 border-solid rounded mt-10">
             <div className="w-64 h-96 relative">
