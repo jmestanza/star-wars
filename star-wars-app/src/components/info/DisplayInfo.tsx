@@ -23,7 +23,14 @@ function DisplayInfo<T extends Basic>({
   return (
     <div className="flex flex-col h-100vh bg-black">
       {displaySearchBar && (
-        <SearchBar setName={setName} placeholder={searchPlaceholder} />
+        <SearchBar
+          setName={setName}
+          placeholder={searchPlaceholder}
+          onePager={
+            (page == 1 && totalPages == 1) ||
+            (page == 1 && totalPages == Number.MAX_VALUE)
+          }
+        />
       )}
       <PaginationLayout
         page={page}

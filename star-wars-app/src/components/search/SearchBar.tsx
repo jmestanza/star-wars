@@ -1,11 +1,20 @@
-import axios from "axios";
-import React, { useState } from "react";
-
-const SearchBar = (props: any) => {
+const SearchBar = ({
+  setName,
+  placeholder,
+  onePager,
+}: {
+  setName: Function;
+  placeholder: string;
+  onePager: boolean;
+}) => {
   const searchNameHandler = (e: any) => {
-    props.setName(e.target.value);
-    // props.onSearch();
+    setName(e.target.value);
   };
+
+  if (onePager) {
+    return <div className="w-full h-54px"></div>;
+  }
+
   return (
     <div className="flex justify-center items-center">
       <div className="w-3/4 flex justify-end">
@@ -32,7 +41,7 @@ const SearchBar = (props: any) => {
             type="search"
             id="default-search"
             className="p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-yellow-500 bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500"
-            placeholder={props.placeholder}
+            placeholder={placeholder}
             required
           />
         </div>

@@ -22,7 +22,7 @@ const Movies = () => {
   return (
     <DisplayInfo<Movie>
       asset="films"
-      displaySearchBar={false}
+      displaySearchBar={true}
       searchPlaceholder={""}
       getGridDisplay={getGridDisplay}
     />

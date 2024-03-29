@@ -11,10 +11,7 @@ const Starships = () => {
         <div className="grid grid-cols-1 md:grid-cols-5">
           {content.results.map((ship: Starship, index) => {
             return (
-              <StarshipCard
-                key={ship.id}
-                starship={{ ...ship, id: index.toString() }}
-              />
+              <StarshipCard key={ship.id} starship={ship} imgIdx={index + 1} />
             );
           })}
         </div>

@@ -7,6 +7,7 @@ const PaginationStatus = ({
 }) => {
   const canDisplay = page >= 1 && totalPages != Number.MAX_VALUE;
   const noData = totalPages == 0;
+  if (page == 1 && totalPages == 1) return null;
 
   return (
     <div className="flex items-center justify-center font-primary bg-black">

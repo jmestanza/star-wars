@@ -7,6 +7,46 @@ import Starship from "../../../../models/starship.dto";
 export default function Page({ params }: { params: { id: string } }) {
   const [starship, setStarship] = useState<Starship>();
 
+  const apiIdx = [
+    null,
+    2,
+    3,
+    5,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    17,
+    21,
+    22,
+    23,
+    27,
+    28,
+    29,
+    31,
+    32,
+    39,
+    40,
+    41,
+    43,
+    47,
+    48,
+    49,
+    52,
+    58,
+    59,
+    61,
+    63,
+    64,
+    65,
+    66,
+    68,
+    74,
+    75,
+  ];
+
   useEffect(() => {
     fetch(`https://swapi.dev/api/starships/${params.id}`)
       .then((res) => res.json())
@@ -23,7 +63,9 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="border-yellow-500 border-2 border-solid rounded mt-10">
           <div className="w-72 h-96 relative">
             <Image
-              src={`/img/starships/${params.id}.webp`}
+              src={`/img/starships/${apiIdx.findIndex(
+                (el) => el == parseInt(params.id)
+              )}.webp`}
               fill
               style={{ objectFit: "contain" }}
               alt="name"

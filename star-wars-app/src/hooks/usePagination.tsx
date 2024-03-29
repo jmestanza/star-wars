@@ -55,10 +55,12 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     };
 
     fetch(`https://swapi.dev/api/${asset}/?search=${name}&page=${page}`, {
-      // next: { revalidate: 3600 }, // every hour revalidate fetch
+      next: { revalidate: 3600 }, // every hour revalidate fetch
     })
       .then((res) => res.json())
       .then((res) => {
+        const ids: Number[] = res.results.map((x: T) => parseInt(getId(x.url)));
+        console.log(ids);
         const allTWithId: T[] = res.results.map((x: T) => {
           return { ...x, id: getId(x.url), loaded: true };
         });
