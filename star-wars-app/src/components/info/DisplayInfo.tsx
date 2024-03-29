@@ -20,8 +20,6 @@ function DisplayInfo<T extends Basic>({
   const { page, totalPages, content, onNext, onPrev, resetPagination } =
     usePagination<T>(asset, name);
 
-  console.log("starships: ", content);
-
   return (
     <div className="flex flex-col h-100vh bg-black">
       {displaySearchBar && (
