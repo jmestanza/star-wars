@@ -59,8 +59,6 @@ function usePagination<T extends Basic>(asset: string, name: string) {
     })
       .then((res) => res.json())
       .then((res) => {
-        const ids: Number[] = res.results.map((x: T) => parseInt(getId(x.url)));
-        console.log(ids);
         const allTWithId: T[] = res.results.map((x: T) => {
           return { ...x, id: getId(x.url), loaded: true };
         });

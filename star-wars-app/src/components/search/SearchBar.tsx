@@ -1,19 +1,13 @@
 const SearchBar = ({
   setName,
   placeholder,
-  onePager,
 }: {
   setName: Function;
   placeholder: string;
-  onePager: boolean;
 }) => {
   const searchNameHandler = (e: any) => {
     setName(e.target.value);
   };
-
-  if (onePager) {
-    return <div className="w-full h-54px"></div>;
-  }
 
   return (
     <div className="flex justify-center items-center">
