@@ -7,8 +7,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="h-74px"></div>
-      <nav className="bg-black absolute w-full">
+      {!showDropdown && <div className="h-74px"></div>}
+      <nav className={`bg-black ${showDropdown ? "" : "absolute"} w-full`}>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4">
           <div className="flex md:order-2">
             <button

@@ -6,14 +6,13 @@ import DisplayInfo from "../../components/info/DisplayInfo";
 import PaginatedResponse from "../../../models/peoplereq.dto";
 
 const Movies = () => {
-  const mapFunction = (movie: Movie) => {
-    return <MovieCard key={movie.id} movie={movie} />;
-  };
   const getGridDisplay = (content: PaginatedResponse<Movie>) => {
     return (
-      <div className="w-2/5">
+      <div className="sm:w-2/5">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          {content.results.map((x) => mapFunction(x))}
+          {content.results.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
         </div>
       </div>
     );
@@ -23,7 +22,7 @@ const Movies = () => {
     <DisplayInfo<Movie>
       asset="films"
       displaySearchBar={true}
-      searchPlaceholder={"Search a movie"}
+      searchPlaceholder={"Search movie"}
       getGridDisplay={getGridDisplay}
     />
   );
