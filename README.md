@@ -1,7 +1,7 @@
 # star-wars
 Todo List: 
 - Test
-- Use server components
+- Use server components for components that don't do fetches
 
 Features used: 
 - Cached response with revalidate of 1 hour.
