@@ -1,57 +1,15 @@
 "use client";
 import Spinner from "@/components/spinner/Spinner";
+import { apiIdx } from "@/static-data/starships-idx";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Starship from "../../../../models/starship.dto";
+import { use } from "react";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [starship, setStarship] = useState<Starship>();
-
-  const apiIdx = [
-    null,
-    2,
-    3,
-    5,
-    9,
-    10,
-    11,
-    12,
-    13,
-    15,
-    17,
-    21,
-    22,
-    23,
-    27,
-    28,
-    29,
-    31,
-    32,
-    39,
-    40,
-    41,
-    43,
-    47,
-    48,
-    49,
-    52,
-    58,
-    59,
-    61,
-    63,
-    64,
-    65,
-    66,
-    68,
-    74,
-    75,
-  ];
-
-  useEffect(() => {
-    fetch(`https://swapi.dev/api/starships/${params.id}`)
-      .then((res) => res.json())
-      .then((res) => setStarship(res));
-  }, [params.id]);
+  const starship = use(
+    fetch(`https://swapi.dev/api/starships/${params.id}`, {
+      next: { revalidate: 3600 }, // every hour revalidate
+    }).then((res) => res.json())
+  );
 
   const shouldNotRender = starship === undefined;
 

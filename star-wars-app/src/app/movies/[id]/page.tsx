@@ -1,17 +1,14 @@
 "use client";
 import Spinner from "@/components/spinner/Spinner";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Movie from "../../../../models/movie.dto";
+import { use } from "react";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [movie, setMovie] = useState<Movie>();
-
-  useEffect(() => {
-    fetch(`https://swapi.dev/api/films/${params.id}`)
-      .then((res) => res.json())
-      .then((res) => setMovie(res));
-  }, [params.id]);
+  const movie = use(
+    fetch(`https://swapi.dev/api/films/${params.id}`, {
+      next: { revalidate: 3600 }, // every hour revalidate
+    }).then((res) => res.json())
+  );
 
   const shouldNotRender = movie === undefined;
 

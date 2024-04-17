@@ -1,17 +1,14 @@
 "use client";
 import Spinner from "@/components/spinner/Spinner";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Planet from "../../../../models/planet.dto";
+import { use } from "react";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [planet, setPlanet] = useState<Planet>();
-
-  useEffect(() => {
-    fetch(`https://swapi.dev/api/planets/${params.id}`)
-      .then((res) => res.json())
-      .then((res) => setPlanet(res));
-  }, [params.id]);
+  const planet = use(
+    fetch(`https://swapi.dev/api/planets/${params.id}`, {
+      next: { revalidate: 3600 }, // every hour revalidate
+    }).then((res) => res.json())
+  );
 
   const shouldNotRender = planet === undefined;
 
